@@ -1,12 +1,12 @@
 Spree::Admin::ReportsController.class_eval do
 
-  module OverrideMethods
+  module SimpleReport
     def initialize
       Spree::Admin::ReportsController.add_available_report!(:total_sales_of_each_product)
       super
     end
   end
-  prepend OverrideMethods
+  prepend SimpleReport
 
   def total_sales_of_each_product
     @variants = Spree::Variant.joins(line_items: :order)
