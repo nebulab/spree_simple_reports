@@ -1,7 +1,7 @@
-SpreeSimpleReports
-==================
+Spree Simple Reports
+====================
 
-Introduction goes here.
+A spree extension with additional reports.
 
 Installation
 ------------
@@ -36,4 +36,4 @@ Simply add this require statement to your spec_helper:
 require 'spree_simple_reports/factories'
 ```
 
-Copyright (c) 2014 [name of extension creator], released under the New BSD License
+Copyright (c) 2014 Nebulab, released under the New BSD License
