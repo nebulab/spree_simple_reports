@@ -1,5 +1,5 @@
 $ ->
   options =
-    valueNames: [ 'variant', 'quantity', 'sales' ]
+    valueNames: [ 'name', 'sku', 'quantity', 'sales' ]
 
   new List('sales_total', options)

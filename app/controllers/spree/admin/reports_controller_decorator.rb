@@ -9,11 +9,11 @@ Spree::Admin::ReportsController.class_eval do
   prepend SimpleReport
 
   def total_sales_of_each_product
-    @variants = Spree::Variant.joins(line_items: :order)
-                .select("spree_variants.id, sku, SUM(spree_line_items.quantity) as quantity, SUM((spree_line_items.price * spree_line_items.quantity) + spree_line_items.adjustment_total) as total_price")
+    @variants = Spree::Variant.joins(:product, line_items: :order)
+                .select("spree_variants.id, spree_products.name as name, sku, SUM(spree_line_items.quantity) as quantity, SUM((spree_line_items.price * spree_line_items.quantity) + spree_line_items.adjustment_total) as total_price")
                 .where.not('spree_orders.created_at' => nil)
                 .where('spree_orders.created_at' => [created_at_gt..created_at_lt])
-                .group('spree_variants.id')
+                .group('spree_variants.id, spree_products.name')
   end
 
   private

@@ -22,12 +22,15 @@
 
 %div#sales_total
   %div.field.align-center
+    = label_tag 'Search by SKU:'
     = text_field_tag 'search', '', class: 'search'
   %table.admin-report{'data-hook' => "sales_total"}
     %thead
       %tr
-        %th.sort{'data-sort' => 'variant'}
-          = Spree.t(:variant)
+        %th.sort{'data-sort' => 'name'}
+          = Spree.t(:variant_name)
+        %th.sort{'data-sort' => 'sku'}
+          = Spree.t(:variant_sku)
         %th.sort{'data-sort' => 'quantity'}
           = Spree.t(:quantity)
         %th.sort{'data-sort' => 'sales'}
@@ -35,7 +38,9 @@
     %tbody.list
       - @variants.each do |row|
         %tr.align-center
-          %td.variant
+          %td.name
+            = row[:name]
+          %td.sku
             = row[:sku]
           %td.quantity
             = row[:quantity]
