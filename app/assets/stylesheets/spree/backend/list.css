@@ -1,3 +1,6 @@
+.sort {
+  cursor: pointer;
+}
 .sort:focus {
   outline:none;
 }
