@@ -2,4 +2,5 @@ $ ->
   options =
     valueNames: [ 'name', 'sku', 'quantity', 'sales' ]
 
-  new List('sales_total', options)
+  list = new List('sales_total', options)
+  list.sort('sales', { order: 'desc' })
