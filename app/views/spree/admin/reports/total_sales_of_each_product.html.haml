@@ -39,7 +39,7 @@
       - @variants.each do |row|
         %tr.align-center
           %td.name
-            = row[:name]
+            = link_to "#{row[:name]} #{Spree::Variant.find(row[:id]).options_text}", edit_admin_product_variant_path(row[:product_id], row[:id])
           %td.sku
             = row[:sku]
           %td.quantity
