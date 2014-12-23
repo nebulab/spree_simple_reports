@@ -10,6 +10,9 @@
 
 - content_for :table_filter do
   = form_tag spree.total_sales_of_each_product_admin_reports_path do
+    %div.select-filter.field.align-center
+      = label_tag nil, Spree.t(:store), class: 'inline'
+      = select_tag :store_id, options_from_collection_for_select(Spree::Store.all, "id", "name", params[:store_id]), prompt: 'All'
     %div.date-range-filter.field.align-center
       = label_tag nil, Spree.t(:start), class: 'inline'
       = text_field_tag :created_at_gt, datepicker_field_value(params[:created_at_gt]), class: 'datepicker datepicker-from'
