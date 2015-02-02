@@ -3,6 +3,8 @@ Spree::Admin::ReportsController.class_eval do
   module SimpleReport
     def initialize
       Spree::Admin::ReportsController.add_available_report!(:total_sales_of_each_product)
+      Spree::Admin::ReportsController.add_available_report!(:ten_days_order_count)
+      Spree::Admin::ReportsController.add_available_report!(:thirty_days_order_count)
       super
     end
   end
@@ -17,7 +19,29 @@ Spree::Admin::ReportsController.class_eval do
                 .group('spree_variants.id, spree_products.id, spree_products.name')
   end
 
+  def ten_days_order_count
+    @counts = n_day_order_count(10)
+  end
+
+  def thirty_days_order_count
+    @counts = n_day_order_count(30)
+  end
+
   private
+
+  def n_day_order_count(n)
+    counts = []
+    n.times do |i|
+      counts << {
+        number: i,
+        date: i.days.ago,
+        count: Spree::Order.complete
+          .where("completed_at >= ?",i.days.ago.beginning_of_day)
+          .where("completed_at <= ?",i.days.ago.end_of_day).count
+      }
+    end
+    counts
+  end
 
   def store_id
     params[:store_id].blank? ? Spree::Store.all.map(&:id) : params[:store_id]
