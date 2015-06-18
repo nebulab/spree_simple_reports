@@ -24,7 +24,7 @@
       <% counts.each do |count| %>
         <tr class="align-center">
           <td class="date">
-            <%= count[:date].strftime("%A, %b %d") %>
+            <%= I18n.l(count[:date], format: :long) %>
           </td>
           <td class="quantity">
             <%= count[:count] %>

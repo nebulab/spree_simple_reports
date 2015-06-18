@@ -40,7 +40,7 @@ Spree::Admin::ReportsController.class_eval do
     n.times do |i|
       counts << {
         number: i,
-        date: i.days.ago,
+        date: i.days.ago.to_date,
         count: Spree::Order.complete
           .where("completed_at >= ?",i.days.ago.beginning_of_day)
           .where("completed_at <= ?",i.days.ago.end_of_day).count

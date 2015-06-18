@@ -1,7 +1,12 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
   spree:
-    total_sales_of_each_product: 'Total Sales Of Each Product'
+    total_sales_of_each_product: "Total Sales Of Each Product"
+    total_sales_of_each_product_description: ""
+    ten_days_order_count: "Order Counts for Last 10 Days"
+    ten_days_order_count_description: ""
+    thirty_days_order_count: "Order Counts for Last 30 Days"
+    thirty_days_order_count_description: ""
+
     order_counts_for_last_n_days: "Order Counts for Last %{counts} Days"
+    variant_name: Variant Name
+    variant_sku: Variant SKU
