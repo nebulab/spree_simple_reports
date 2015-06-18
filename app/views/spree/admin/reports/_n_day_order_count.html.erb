@@ -1,0 +1,36 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:order_counts_for_last_n_days, counts: counts.size) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= link_to_with_icon 'arrow-left', Spree.t(:back_to_reports_list), spree.admin_reports_url, class: 'button' %>
+  </li>
+<% end %>
+
+<div id="sales_total">
+  <table class="admin-report" data-hook="days_order_count">
+    <thead>
+      <tr>
+        <th class="sort" data-sort="name">
+          <%= Spree.t(:date) %>
+        </th>
+        <th class="sort" data-sort="quantity">
+          <%= Spree.t(:quantity) %>
+        </th>
+      </tr>
+    </thead>
+    <tbody class="list">
+      <% counts.each do |count| %>
+        <tr class="align-center">
+          <td class="date">
+            <%= count[:date].strftime("%A, %b %d") %>
+          </td>
+          <td class="quantity">
+            <%= count[:count] %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
