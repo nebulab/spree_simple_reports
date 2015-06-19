@@ -1,7 +1,11 @@
 Spree Simple Reports
 ====================
 
-A spree extension with additional reports.
+A spree extension with additional reports:
+
+* Total Sales Of Each Product
+* Order Counts for Last 10 Days
+* Order Counts for Last 30 Days
 
 Installation
 ------------
@@ -9,7 +13,7 @@ Installation
 Add spree_simple_reports to your Gemfile:
 
 ```ruby
-gem 'spree_simple_reports'
+gem 'spree_simple_reports', github: 'nebulab/spree_simple_reports'
 ```
 
 Bundle your dependencies and run the installation generator:
@@ -36,4 +40,4 @@ Simply add this require statement to your spec_helper:
 require 'spree_simple_reports/factories'
 ```
 
-Copyright (c) 2014 Nebulab, released under the New BSD License
+Copyright (c) 2015 Nebulab, released under the New BSD License
