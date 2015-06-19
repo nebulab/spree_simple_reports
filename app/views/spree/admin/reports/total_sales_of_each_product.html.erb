@@ -22,10 +22,10 @@
     <% end %>
     <div class="date-range-filter field align-center">
       <%= label_tag nil, Spree.t(:start), class: 'inline' %>
-      <%= text_field_tag :created_at_gt, datepicker_field_value(params[:created_at_gt]), class: 'datepicker datepicker-from' %>
+      <%= text_field_tag :completed_at_gt, datepicker_field_value(params[:completed_at_gt]), class: 'datepicker datepicker-from' %>
       <span class="range-divider">
         <i class="fa fa-arrow-right"></i>
-        <%= text_field_tag :created_at_lt, datepicker_field_value(params[:created_at_lt]), class: 'datepicker datepicker-to' %>
+        <%= text_field_tag :completed_at_lt, datepicker_field_value(params[:completed_at_lt]), class: 'datepicker datepicker-to' %>
         <%= label_tag nil, Spree.t(:end), class: 'inline' %>
       </span>
     </div>
