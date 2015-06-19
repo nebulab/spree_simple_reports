@@ -20,7 +20,7 @@ Spree::Admin::ReportsController.class_eval do
                 .where.not('spree_orders.created_at' => nil)
                 .where('spree_orders.created_at' => [created_at_gt..created_at_lt])
                 .group('spree_variants.id, spree_products.id, spree_products.name')
-    if supports_store_id?
+    if supports_store_id? && store_id
       @variants = @variants.where("spree_orders.store_id" => store_id)
     end
   end
@@ -50,7 +50,7 @@ Spree::Admin::ReportsController.class_eval do
   end
 
   def store_id
-    params[:store_id].blank? ? Spree::Store.all.map(&:id) : params[:store_id]
+    params[:store_id].presence
   end
 
   def created_at_gt
