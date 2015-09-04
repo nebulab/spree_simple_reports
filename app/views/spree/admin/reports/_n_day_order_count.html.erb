@@ -8,11 +8,11 @@
   </li>
 <% end %>
 
-<div id="sales_total">
+<div id="days_order_count">
   <table class="admin-report" data-hook="days_order_count">
     <thead>
       <tr>
-        <th class="sort" data-sort="name">
+        <th class="sort" data-sort="number">
           <%= Spree.t(:date) %>
         </th>
         <th class="sort" data-sort="quantity">
@@ -24,6 +24,9 @@
       <% counts.each do |count| %>
         <tr class="align-center">
           <td class="date">
+            <span class="number" style="display:none;">
+              <%= count[:number] %>
+            </span>
             <%= I18n.l(count[:date], format: :long) %>
           </td>
           <td class="quantity">
