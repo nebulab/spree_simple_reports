@@ -1,0 +1,79 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:total_sales_of_each_product) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= link_to_with_icon 'arrow-left', Spree.t(:back_to_reports_list), spree.admin_reports_url, class: 'button' %>
+  </li>
+<% end %>
+
+<% content_for :table_filter_title do %>
+  <%= Spree.t(:date_range) %>
+<% end %>
+
+<% content_for :table_filter do %>
+  <%= form_tag spree.total_sales_of_each_product_admin_reports_path do %>
+    <% if supports_store_id? %>
+      <div class="select-filter field align-center">
+        <%= label_tag nil, Spree.t(:store), class: 'inline' %>
+        <%= select_tag :store_id, options_from_collection_for_select(Spree::Store.all, "id", "name", params[:store_id]), prompt: 'All' %>
+      </div>
+    <% end %>
+    <div class="date-range-filter field align-center">
+      <%= label_tag nil, Spree.t(:start), class: 'inline' %>
+      <%= text_field_tag :completed_at_gt, datepicker_field_value(params[:completed_at_gt]), class: 'datepicker datepicker-from' %>
+      <span class="range-divider">
+        <i class="fa fa-arrow-right"></i>
+        <%= text_field_tag :completed_at_lt, datepicker_field_value(params[:completed_at_lt]), class: 'datepicker datepicker-to' %>
+        <%= label_tag nil, Spree.t(:end), class: 'inline' %>
+      </span>
+    </div>
+    <div class="actions filter-actions">
+      <%= button Spree.t(:search), 'search' %>
+    </div>
+  <% end %>
+<% end %>
+
+<div id="sales_total">
+  <div class="field align-center">
+    <%= label_tag 'Search by SKU:' %>
+    <%= text_field_tag 'search', '', class: 'search' %>
+  </div>
+  <table class="admin-report" data-hook="sales_total">
+    <thead>
+      <tr>
+        <th class="sort" data-sort="name">
+          <%= Spree.t(:variant_name) %>
+        </th>
+        <th class="sort" data-sort="sku">
+          <%= Spree.t(:variant_sku) %>
+        </th>
+        <th class="sort" data-sort="quantity">
+          <%= Spree.t(:quantity) %>
+        </th>
+        <th class="sort" data-sort="sales">
+          <%= Spree.t(:sales_total) %>
+        </th>
+      </tr>
+    </thead>
+    <tbody class="list">
+      <% @variants.each do |row| %>
+        <tr class="align-center">
+          <td class="name">
+            <%= link_to "#{row[:name]} #{Spree::Variant.find(row[:id]).options_text}", edit_admin_product_variant_path(row[:product_id], row[:id]) %>
+          </td>
+          <td class="sku">
+            <%= row[:sku] %>
+          </td>
+          <td class="quantity">
+            <%= row[:quantity] %>
+          </td>
+          <td class="sales">
+            <%= row[:total_price] %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

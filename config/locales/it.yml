@@ -1,0 +1,12 @@
+it:
+  spree:
+    total_sales_of_each_product: "Vendite totali di ogni prodotto"
+    total_sales_of_each_product_description: ""
+    ten_days_order_count: "Numero Ordini degli ultimi 10 giorni"
+    ten_days_order_count_description: ""
+    thirty_days_order_count: "Numero Ordini degli ultimi 30 giorni"
+    thirty_days_order_count_description: ""
+
+    order_counts_for_last_n_days: "Numero Ordini degli ultimi %{counts} giorni"
+    variant_name: Nome Variante
+    variant_sku: Sku Variante
