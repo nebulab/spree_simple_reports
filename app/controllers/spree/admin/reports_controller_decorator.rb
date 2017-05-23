@@ -64,9 +64,9 @@ module Spree
 
       def completed_at_lt
         params[:completed_at_lt] = if params[:completed_at_lt].blank?
-          Date.today
+          Date.today.end_of_day
         else
-          Date.parse(params[:completed_at_lt])
+          Date.parse(params[:completed_at_lt]).end_of_day
         end
       end
 
